@@ -1,9 +1,60 @@
-
 <div style="text-align:center">
   <h1>
     Led Resistance Calculator
   </h1>
-  <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
 </div>
 
+<!-- input section -->
 
+<div>
+  <ul>
+    <li>
+      <label id="powerSupply">Power supply (V+):
+        <input type="text">
+      </label>
+    </li>
+    <li>
+      <label id="ledPowerDrop">Led power drop (V):
+        <input type="text">
+      </label>
+    </li>
+    <li>
+      <label id="ledCurrent">Led current (mA/Uf):
+        <input type="text">
+      </label>
+    </li>
+    <li>
+      <label id="numberOfLeds">Number of LEDs:
+        <input type="text">
+      </label>
+    </li>
+  </ul>
+</div>
+
+<div>
+  <label class="radio">Serie
+    <input type="radio" id="Serie">
+  </label>
+  <label class="radio">Parallel
+    <input type="radio" id="Parallel">
+  </label>
+</div>
+
+<div>
+  <button>Calculate</button>
+</div>
+
+<!-- output section -->
+
+<div>
+    <ul>
+      <li>Calculated resistance</li>
+      <li>Needed resistor</li>
+    </ul>
+</div>
+
+<!-- example -->
+
+<!-- <label *ngIf="titel != 'Muziekstuk Info'" class="button" id="pauseMusic">Pause
+  <input type="button" (click)="pauseMusic()" style="display:none" />
+</label> -->
