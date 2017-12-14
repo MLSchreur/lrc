@@ -4,6 +4,12 @@
   <input type="button" (click)="pauseMusic()" style="display:none" />
 </label> -->
 
+<!-- <input [(ngModel)]="bladmuziekInvoer.titel" placeholder="Titel">
+<input [(ngModel)]="bladmuziekInvoer.artiest" placeholder="Artiest">
+<input [(ngModel)]="bladmuziekInvoer.omschrijving" placeholder="Omschrijving">
+<input [(ngModel)]="bladmuziekInvoer.lesonderdeel" placeholder="Lesonderdeel">
+<button (click)="postBladmuziek()">Post Bladmuziek</button> -->
+
 <!-- header section -->
 
 <div style="text-align:center">
@@ -18,22 +24,22 @@
   <ul>
     <li>
       <label id="powerSupply">Power supply (V+):
-        <input type="text">
+        <input [(ngModel)]="powerSupply">
       </label>
     </li>
     <li>
       <label id="ledPowerDrop">Led power drop (V):
-        <input type="text">
+        <input [(ngModel)]="ledPowerDrop">
       </label>
     </li>
     <li>
       <label id="ledCurrent">Led current (mA/Uf):
-        <input type="text">
+        <input [(ngModel)]="ledCurrent">
       </label>
     </li>
     <li>
       <label id="numberOfLeds">Number of LEDs:
-        <input type="text">
+        <input [(ngModel)]="numberOfLeds">
       </label>
     </li>
   </ul>
@@ -49,7 +55,7 @@
 </div>
 
 <div>
-  <button>Calculate</button>
+  <button (click)="calculate()">Calculate</button>
 </div>
 
 <!-- output section -->
