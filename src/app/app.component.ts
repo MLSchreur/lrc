@@ -81,7 +81,6 @@ export class AppComponent {
       if(this.calcValue <= this.resistorValues[i] && this.calcValue > this.resistorValues[i-1]) {
         this.resistor = this.resistorValues[i];
       }
-      //console.log("element at position " + i + " is " + this.resistorValues[i])
     }
   }
 
@@ -90,5 +89,8 @@ export class AppComponent {
     this.ledPowerDrop = null;
     this.ledCurrent = null;
     this.numberOfLeds = null;
+    this.circuit = '';
+    this.calcValue = null;
+    this.resistor = null;
   }
 }
