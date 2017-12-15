@@ -15,7 +15,7 @@ export class AppComponent {
   ledCurrentMessage   : string;
   numberOfLedsMessage : string;
   show                : boolean;
-
+  circuit             : string;
 
   valueCheck(){
     if(this.powerSupply < 3 || this.powerSupply > 24){
@@ -39,14 +39,18 @@ export class AppComponent {
       this.numberOfLedsMessage = "Number of LED's wrong value";
     }
   }
-  
-  
+
+  seriesCheck(){
+    console.log("Schakeling: " + this.circuit);
+  }
+   
   calculate(){
     console.log(this.powerSupply);
     console.log(this.ledPowerDrop);
     console.log(this.ledCurrent);
     console.log(this.numberOfLeds);
     this.valueCheck();
+    this.seriesCheck()
   }
 
 }

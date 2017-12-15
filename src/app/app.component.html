@@ -50,13 +50,17 @@
 </div>
 
 <div>
-  <label class="radio">Serie
-    <input type="radio" id="Serie">
-  </label>
-  <label class="radio">Parallel
-    <input type="radio" id="Parallel">
-  </label>
+  <input [(ngModel)]="circuit" value="serie" type="radio" id="radioSerie">
+  <label for="radioSerie">Serie</label>
+
+  <input [(ngModel)]="circuit" value="parallel" type="radio" id="radioParallel">
+  <label for="radioParallel">Parallel</label>
 </div>
+
+
+<!-- <input [(ngModel)]="model.Gender" name="Gender" value="male" id="radioMale" type="radio">
+<label for="radioMale">Male</label> -->
+
 
 <div>
   <button (click)="calculate()">Calculate</button>
