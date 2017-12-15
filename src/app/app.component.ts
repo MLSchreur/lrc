@@ -18,6 +18,7 @@ export class AppComponent {
   circuit             : string;
   calcValue           : number;
   resistorValues      : number[];
+  resistor            : number;
   
   constructor(){
     this.resistorValues = [0,0.5,1,1.2,1.5,1.8,2.2,2.7,3.3,3.9,4.7,6.8,8.2,10,10.2,10.5,10.7,11,11.3,11.5,
@@ -71,6 +72,16 @@ export class AppComponent {
       console.log("Schakeling parallel / " + this.circuit);
       this.calcValue = (this.powerSupply - this.ledPowerDrop) / (this.ledCurrent * this.numberOfLeds / 1000);
       console.log("calcValue/parallel = " + this.calcValue);
+    }
+    this.neededResistor();
+  }
+
+  neededResistor(){
+    for(let i = 1; i < this.resistorValues.length; i++){
+      if(this.calcValue <= this.resistorValues[i] && this.calcValue > this.resistorValues[i-1]) {
+        this.resistor = this.resistorValues[i];
+      }
+      //console.log("element at position " + i + " is " + this.resistorValues[i])
     }
   }
 
