@@ -24,22 +24,26 @@
   <ul>
     <li>
       <label id="powerSupply">Power supply (V+):
-        <input [(ngModel)]="powerSupply">
+        <input [(ngModel)]="powerSupply" placeholder="3 - 24">
+        <div *ngIf="show"><p>{{powerSupplyMessage}}</p></div>
       </label>
     </li>
     <li>
       <label id="ledPowerDrop">Led power drop (V):
-        <input [(ngModel)]="ledPowerDrop">
+        <input [(ngModel)]="ledPowerDrop" placeholder="1.6 - 4">
+        <div *ngIf="show"><p>{{ledPowerDropMessage}}</p></div>
       </label>
     </li>
     <li>
       <label id="ledCurrent">Led current (mA/Uf):
-        <input [(ngModel)]="ledCurrent">
+        <input [(ngModel)]="ledCurrent" placeholder="2 - 70">
+        <div *ngIf="show"><p>{{ledCurrentMessage}}</p></div>
       </label>
     </li>
     <li>
       <label id="numberOfLeds">Number of LEDs:
-        <input [(ngModel)]="numberOfLeds">
+        <input [(ngModel)]="numberOfLeds" placeholder="1 - 99">
+        <div *ngIf="show"><p>{{numberOfLedsMessage}}</p></div>
       </label>
     </li>
   </ul>
