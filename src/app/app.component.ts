@@ -85,4 +85,10 @@ export class AppComponent {
     }
   }
 
+  clearInput(){
+    this.powerSupply = null;
+    this.ledPowerDrop = null;
+    this.ledCurrent = null;
+    this.numberOfLeds = null;
+  }
 }
