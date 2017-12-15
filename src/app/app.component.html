@@ -1,9 +1,76 @@
+<!-- header section -->
 
 <div style="text-align:center">
   <h1>
     Led Resistance Calculator
   </h1>
-  <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
 </div>
 
+<!-- input section -->
 
+<div>
+  <ul>
+    <li>
+      <label for="powerSupply">Power supply (V+):</label>
+      <input [(ngModel)]="powerSupply" id="powerSupply" placeholder="3 - 24">
+      <div *ngIf="show">
+        <p>{{powerSupplyMessage}}</p>
+      </div>
+    </li>
+    <li>
+      <label for="ledPowerDrop">Led power drop (V):</label>
+      <input [(ngModel)]="ledPowerDrop" id="ledPowerDrop" placeholder="1.6 - 4">
+      <div *ngIf="show">
+        <p>{{ledPowerDropMessage}}</p>
+      </div>
+    </li>
+    <li>
+      <label for="ledCurrent">Led current (mA/Uf):</label>
+      <input [(ngModel)]="ledCurrent" id="ledCurrent" placeholder="2 - 70">
+      <div *ngIf="show">
+        <p>{{ledCurrentMessage}}</p>
+      </div>
+    </li>
+    <li>
+      <label for="numberOfLeds">Number of LEDs:</label>
+      <input [(ngModel)]="numberOfLeds" id="numberOfLeds" placeholder="1 - 99">
+      <div *ngIf="show">
+        <p>{{numberOfLedsMessage}}</p>
+      </div>
+    </li>
+  </ul>
+</div>
+<div>
+  <b>Circuit: </b>
+  <input [(ngModel)]="circuit" value="serie" type="radio" id="radioSerie">
+  <label for="radioSerie">Serie</label>
+
+  <input [(ngModel)]="circuit" value="parallel" type="radio" id="radioParallel">
+  <label for="radioParallel">Parallel</label>
+</div>
+<div>
+  <button (click)="calculate()">Calculate</button>
+</div>
+
+<!-- output section -->
+
+<div>
+  <ul>
+    <li>Calculated resistance: {{calcValue}}
+      <span *ngIf="calcValue">&#8486;</span>
+    </li>
+    <li>Needed resistor: {{resistor}}
+      <span *ngIf="resistor">&#8486;</span>
+    </li>
+  </ul>
+</div>
+
+<!-- colour code section -->
+
+Colour code
+
+<!-- clear button -->
+
+<div>
+  <button (click)="clearInput()">Clear</button>
+</div>
