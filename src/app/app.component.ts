@@ -41,9 +41,13 @@ export class AppComponent {
         this.ledPowerDrop < 1.6 || this.ledPowerDrop > 4 || isNaN(this.ledPowerDrop) ||
         this.ledCurrent < 2 || this.ledCurrent > 70 || isNaN(this.ledCurrent) ||
         this.numberOfLeds < 1 || this.numberOfLeds > 99 || isNaN(this.numberOfLeds)) {
-          this.message = "Please correct your input values";
+          this.message = "You didn't provide correct input values. Please correct them.";
           this.clearInput()
-        } else this.calculate();
+        } else {
+          
+          this.calculate();
+          this.message = "";
+        }
   }
 
 
@@ -75,6 +79,19 @@ export class AppComponent {
     for (let i = 2; i < this.colourString.length; i++) {
       this.colour3 = this.colourArray[(this.colourString.length - 2)];
     }
+    this.displayColour();
+  }
+
+  displayColour(){
+    console.log("in displayColour()");
+    let colour1 = document.getElementById("colour1");
+    console.log(colour1);
+    colour1.style.backgroundColor = "purple";
+    colour1.style.border = "2px solid black"
+    colour1.style.padding = "10px";
+    //colour1.style.height = "50px";
+
+
   }
 
   clearInput() {
@@ -88,5 +105,6 @@ export class AppComponent {
     this.colour1 = "";
     this.colour2 = "";
     this.colour3 = "";
+    //this.message = "";
   }
 }
