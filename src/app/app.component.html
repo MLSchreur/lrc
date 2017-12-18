@@ -1,5 +1,7 @@
 <!-- header section -->
 
+<alert type="succes">hello</alert>
+
 <div style="text-align:center">
   <h1>
     Led Resistance Calculator
@@ -37,7 +39,7 @@
   <label for="radioParallel">Parallel</label>
 </div>
 <div>
-  <button (click)="valueCheck()">Calculate</button>
+  <button class="btn" (click)="valueCheck()">Calculate</button>
   <div *ngIf="message">
     <p>{{message}}</p>
   </div>
