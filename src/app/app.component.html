@@ -13,30 +13,18 @@
     <li>
       <label for="powerSupply">Power supply (V+):</label>
       <input [(ngModel)]="powerSupply" id="powerSupply" placeholder="3 - 24">
-      <div *ngIf="show">
-        <p>{{powerSupplyMessage}}</p>
-      </div>
     </li>
     <li>
       <label for="ledPowerDrop">Led power drop (V):</label>
       <input [(ngModel)]="ledPowerDrop" id="ledPowerDrop" placeholder="1.6 - 4">
-      <div *ngIf="show">
-        <p>{{ledPowerDropMessage}}</p>
-      </div>
     </li>
     <li>
       <label for="ledCurrent">Led current (mA/Uf):</label>
       <input [(ngModel)]="ledCurrent" id="ledCurrent" placeholder="2 - 70">
-      <div *ngIf="show">
-        <p>{{ledCurrentMessage}}</p>
-      </div>
     </li>
     <li>
       <label for="numberOfLeds">Number of LEDs:</label>
       <input [(ngModel)]="numberOfLeds" id="numberOfLeds" placeholder="1 - 99">
-      <div *ngIf="show">
-        <p>{{numberOfLedsMessage}}</p>
-      </div>
     </li>
   </ul>
 </div>
@@ -49,7 +37,10 @@
   <label for="radioParallel">Parallel</label>
 </div>
 <div>
-  <button (click)="calculate()">Calculate</button>
+  <button (click)="valueCheck()">Calculate</button>
+  <div *ngIf="message">
+    <p>{{message}}</p>
+  </div>
 </div>
 
 <!-- output section -->

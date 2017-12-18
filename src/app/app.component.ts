@@ -10,10 +10,7 @@ export class AppComponent {
   ledPowerDrop: number;
   ledCurrent: number;
   numberOfLeds: number;
-  powerSupplyMessage: string;
-  ledPowerDropMessage: string;
-  ledCurrentMessage: string;
-  numberOfLedsMessage: string;
+  message: string;
   show: boolean;
   circuit: string;
   calcValue: number;
@@ -40,44 +37,22 @@ export class AppComponent {
   }
 
   valueCheck() {
-    if (this.powerSupply < 3 || this.powerSupply > 24) {
-      console.log("Power Supply wrong value")
-      this.show = true;
-      this.powerSupplyMessage = "Power Supply wrong value";
-    }
-    if (this.ledPowerDrop < 1.6 || this.ledPowerDrop > 4) {
-      console.log("Led power drop wrong value")
-      this.show = true;
-      this.ledPowerDropMessage = "Led power drop wrong value";
-    }
-    if (this.ledCurrent < 2 || this.ledCurrent > 70) {
-      console.log("Led current wrong value")
-      this.show = true;
-      this.ledCurrentMessage = "Led current wrong value";
-    }
-    if (this.numberOfLeds < 1 || this.numberOfLeds > 99) {
-      console.log("Number of LED's wrong value")
-      this.show = true;
-      this.numberOfLedsMessage = "Number of LED's wrong value";
-    }
+    if (this.powerSupply < 3 || this.powerSupply > 24 || isNaN(this.powerSupply) ||
+        this.ledPowerDrop < 1.6 || this.ledPowerDrop > 4 || isNaN(this.ledPowerDrop) ||
+        this.ledCurrent < 2 || this.ledCurrent > 70 || isNaN(this.ledCurrent) ||
+        this.numberOfLeds < 1 || this.numberOfLeds > 99 || isNaN(this.numberOfLeds)) {
+          this.message = "Please correct your input values";
+          this.clearInput()
+        } else this.calculate();
   }
 
+
   calculate() {
-    console.log("Resistorvalue positie 15: " + this.resistorValues[15])
-    console.log(this.powerSupply);
-    console.log(this.ledPowerDrop);
-    console.log(this.ledCurrent);
-    console.log(this.numberOfLeds);
-    this.valueCheck();
     if (this.circuit == "serie") {
-      console.log("Schakeling serie / " + this.circuit);
       this.calcValue = (this.powerSupply - (this.ledPowerDrop * this.numberOfLeds)) / (this.ledCurrent / 1000);
-      console.log("calcValue/serie = " + this.calcValue);
     }
     if (this.circuit == "parallel") {
-      console.log("Schakeling parallel / " + this.circuit);
       this.calcValue = (this.powerSupply - this.ledPowerDrop) / (this.ledCurrent * this.numberOfLeds / 1000);
-      console.log("calcValue/parallel = " + this.calcValue);
     }
     this.neededResistor();
   }
@@ -93,17 +68,12 @@ export class AppComponent {
 
   colourCode() {
     this.colourString = this.resistor.toString();
-    console.log("needed resistor tostring: " + this.colourString);
     for (let i = 0; i < 2; i++) {
-      console.log("element " + i + " is " + this.colourString[i]);
-      console.log("element " + i + " is " + this.colourArray[this.colourString[i]]);
       this.colour1 = this.colourArray[this.colourString[0]];
       this.colour2 = this.colourArray[this.colourString[1]];
     }
     for (let i = 2; i < this.colourString.length; i++) {
-      console.log("element " + i + " is " + this.colourString[i]);
-      console.log("element " + i + " is " + this.colourArray[(this.colourString.length-2)]);
-      this.colour3 = this.colourArray[(this.colourString.length-2)];
+      this.colour3 = this.colourArray[(this.colourString.length - 2)];
     }
   }
 
