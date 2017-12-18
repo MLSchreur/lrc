@@ -1,78 +1,78 @@
 <div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
 
-<!-- header section -->
+    <div class="col-md-6">
 
-<div style="text-align:center">
-  <h1>
-    Led Resistance Calculator
-  </h1>
-</div>
+      <!-- header section -->
 
-<!-- input section -->
+      <div>
+        <h1>
+          Led Resistance Calculator
+        </h1>
+      </div>
 
-<div>
-  <ul>
-    <li>
-      <label for="powerSupply">Power supply (V+):</label>
-      <input [(ngModel)]="powerSupply" id="powerSupply" placeholder="3 - 24">
-    </li>
-    <li>
-      <label for="ledPowerDrop">Led power drop (V):</label>
-      <input [(ngModel)]="ledPowerDrop" id="ledPowerDrop" placeholder="1.6 - 4">
-    </li>
-    <li>
-      <label for="ledCurrent">Led current (mA/Uf):</label>
-      <input [(ngModel)]="ledCurrent" id="ledCurrent" placeholder="2 - 70">
-    </li>
-    <li>
-      <label for="numberOfLeds">Number of LEDs:</label>
-      <input [(ngModel)]="numberOfLeds" id="numberOfLeds" placeholder="1 - 99">
-    </li>
-  </ul>
-</div>
-<div>
-  <b>Circuit: </b>
-  <input [(ngModel)]="circuit" value="serie" type="radio" id="radioSerie">
-  <label for="radioSerie">Serie</label>
+      <!-- input section -->
 
-  <input [(ngModel)]="circuit" value="parallel" type="radio" id="radioParallel">
-  <label for="radioParallel">Parallel</label>
-</div>
-<div>
-  <button class="btn" (click)="valueCheck()">Calculate</button>
-  <div *ngIf="message">
-    <p>{{message}}</p>
+      <form>
+        <div class="form-group">
+          <label for="powerSupply">Power supply (V+):</label>
+          <input [(ngModel)]="powerSupply" id="powerSupply" class="form-control" placeholder="3 - 24" name="powerSupply">
+        </div>
+        <div class="form-group">
+          <label for="ledPowerDrop">Led power drop (V):</label>
+          <input [(ngModel)]="ledPowerDrop" id="ledPowerDrop" class="form-control" placeholder="1.6 - 4" name="ledPowerDrop">
+        </div>
+        <div class="form-group">
+          <label for="ledCurrent">Led current (mA/Uf):</label>
+          <input [(ngModel)]="ledCurrent" id="ledCurrent" class="form-control" placeholder="2 - 70" name="ledCurrent">
+        </div>
+        <div class="form-group">
+          <label for="numberOfLeds">Number of LEDs:</label>
+          <input [(ngModel)]="numberOfLeds" id="numberOfLeds" class="form-control" placeholder="1 - 99" name="numberOfLeds">
+        </div>
+
+        <div class="form-group">
+          <b>Circuit: </b>
+          <input [(ngModel)]="circuit" value="serie" type="radio" id="radioSerie" name="circuit">
+          <label for="radioSerie">Serie</label>
+          <input [(ngModel)]="circuit" value="parallel" type="radio" id="radioParallel" name="circuit">
+          <label for="radioParallel">Parallel</label>
+        </div>
+        <div class="form-group">
+          <button class="btn" (click)="valueCheck()">Calculate</button>
+          <button class="btn" (click)="clearInput()">Clear</button>
+          <div *ngIf="message">
+            <p>{{message}}</p>
+          </div>
+        </div>
+      </form>
+      
+
+      <!-- output section -->
+
+      <div>
+        <ul>
+          <li>Calculated resistance: {{calcValue}}
+            <span *ngIf="calcValue">&#8486;</span>
+          </li>
+          <li>Needed resistor: {{resistor}}
+            <span *ngIf="resistor">&#8486;</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- colour code section -->
+
+      <div>
+        <b>Colour code</b>
+        <ul>
+          <li>Colour 1: {{colour1}}</li>
+          <li>Colour 2: {{colour2}}</li>
+          <li>Colour 3: {{colour3}}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
   </div>
-</div>
-
-<!-- output section -->
-
-<div>
-  <ul>
-    <li>Calculated resistance: {{calcValue}}
-      <span *ngIf="calcValue">&#8486;</span>
-    </li>
-    <li>Needed resistor: {{resistor}}
-      <span *ngIf="resistor">&#8486;</span>
-    </li>
-  </ul>
-</div>
-
-<!-- colour code section -->
-
-<div>
-  <b>Colour code</b>
-  <ul>
-    <li>Colour 1: {{colour1}}</li>
-    <li>Colour 2: {{colour2}}</li>
-    <li>Colour 3: {{colour3}}</li>
-  </ul>
-</div>
-
-<!-- clear button -->
-
-<div>
-  <button (click)="clearInput()">Clear</button>
-</div>
-
 </div>
