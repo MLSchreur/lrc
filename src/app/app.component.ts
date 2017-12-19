@@ -83,15 +83,12 @@ export class AppComponent {
   }
 
   displayColour(){
-    console.log("in displayColour()");
     let colour1 = document.getElementById("colour1");
-    console.log(colour1);
+    let colour2 = document.getElementById("colour2");
+    let colour3 = document.getElementById("colour3");
     colour1.style.backgroundColor = "purple";
-    colour1.style.border = "2px solid black"
-    colour1.style.padding = "10px";
-    //colour1.style.height = "50px";
-
-
+    colour2.style.backgroundColor = "blue";
+    colour3.style.backgroundColor = "green";
   }
 
   clearInput() {
@@ -105,6 +102,5 @@ export class AppComponent {
     this.colour1 = "";
     this.colour2 = "";
     this.colour3 = "";
-    //this.message = "";
   }
 }
