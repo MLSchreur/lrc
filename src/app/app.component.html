@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3"></div>
-
     <div class="col-md-6">
 
       <!-- header section -->
@@ -48,7 +47,7 @@
       <form class="form-inline">
         <div class="form-group">
           <button class="btn btn-primary btn-lg" (click)="valueCheck()">Calculate</button>
-          <button class="btn btn-primary btn-lg" (click)="clearInput()">Clear</button>
+          <button class="btn btn-lg" (click)="clearInput()">Clear</button>
         </div>
       </form>
       <br>
@@ -76,16 +75,19 @@
 
       <form class="form-inline">
         <div class="form-group">
-          <label>Colour 1:<div id="colour1" class="colourLabel"></div>{{colour1}}</label>
+          <label>Colour 1:
+            <div id="colour1" class="colourLabel"></div>{{colour1}}</label>
         </div>
         <div class="form-group">
-          <label>Colour 2:<div id="colour2" class="colourLabel"></div>{{colour2}}</label>
+          <label>Colour 2:
+            <div id="colour2" class="colourLabel"></div>{{colour2}}</label>
         </div>
         <div class="form-group">
-          <label>Colour 3:<div id="colour3" class="colourLabel"></div>{{colour3}}</label>
+          <label>Colour 3:
+            <div id="colour3" class="colourLabel"></div>{{colour3}}</label>
         </div>
-    </form>
+      </form>
+    </div>
+    <div class="col-md-3"></div>
   </div>
-  <div class="col-md-3"></div>
-</div>
 </div>

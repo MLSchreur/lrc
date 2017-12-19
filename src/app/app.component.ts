@@ -5,13 +5,13 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   powerSupply: number;
   ledPowerDrop: number;
   ledCurrent: number;
   numberOfLeds: number;
   message: string;
-  show: boolean;
   circuit: string;
   calcValue: number;
   resistorValues: number[];
@@ -44,12 +44,10 @@ export class AppComponent {
           this.message = "You didn't provide correct input values. Please correct them.";
           this.clearInput()
         } else {
-          
           this.calculate();
           this.message = "";
         }
   }
-
 
   calculate() {
     if (this.circuit == "serie") {
@@ -86,9 +84,10 @@ export class AppComponent {
     let colour1 = document.getElementById("colour1");
     let colour2 = document.getElementById("colour2");
     let colour3 = document.getElementById("colour3");
-    colour1.style.backgroundColor = "purple";
-    colour2.style.backgroundColor = "blue";
-    colour3.style.backgroundColor = "green";
+    colour1.style.backgroundColor = this.colour1;
+    colour1.style.border = colour2.style.border = colour3.style.border = "1px solid black";
+    colour2.style.backgroundColor = this.colour2;
+    colour3.style.backgroundColor = this.colour3;
   }
 
   clearInput() {
@@ -102,5 +101,6 @@ export class AppComponent {
     this.colour1 = "";
     this.colour2 = "";
     this.colour3 = "";
+    this.displayColour();
   }
 }
