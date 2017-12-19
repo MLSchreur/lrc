@@ -42,12 +42,13 @@ export class AppComponent {
         this.ledPowerDrop < 1.6 || this.ledPowerDrop > 4 || isNaN(this.ledPowerDrop) ||
         this.ledCurrent < 2 || this.ledCurrent > 70 || isNaN(this.ledCurrent) ||
         this.numberOfLeds < 1 || this.numberOfLeds > 99 || isNaN(this.numberOfLeds)) {
-          this.message2 = "";
+          this.clearOutput();
           this.message1 = "You didn't provide correct input values. Please correct them.";
-          this.clearInput()
+          
         } else {
-          this.calculate();
           this.message1 = "";
+          this.message2 = "";
+          this.calculate();
         }
   }
 
@@ -61,6 +62,7 @@ export class AppComponent {
     }
     if (value < 0) {
       console.log("value < 0");
+      this.clearOutput();
       this.message2 = "Power supply not sufficient. Lower the amount of leds or connect a bigger power supply."
     }else {
       this.calcValue = value;
@@ -104,11 +106,17 @@ export class AppComponent {
     this.ledCurrent = null;
     this.numberOfLeds = null;
     this.circuit = '';
+    this.clearOutput;
+  }
+
+  clearOutput(){
     this.calcValue = null;
     this.resistor = null;
     this.colour1 = "";
     this.colour2 = "";
     this.colour3 = "";
     this.displayColour();
+    this.message1 = "";
+    this.message2 = "";
   }
 }
