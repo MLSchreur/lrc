@@ -106,10 +106,12 @@ export class AppComponent {
     this.ledCurrent = null;
     this.numberOfLeds = null;
     this.circuit = '';
-    this.clearOutput;
+    this.clearOutput();
+    console.log("in clearInput()");
   }
 
   clearOutput(){
+    console.log("in clearOutput()");
     this.calcValue = null;
     this.resistor = null;
     this.colour1 = "";
