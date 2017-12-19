@@ -5,13 +5,14 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   powerSupply: number;
   ledPowerDrop: number;
   ledCurrent: number;
   numberOfLeds: number;
-  message: string;
-  show: boolean;
+  message1: string;
+  message2: string;
   circuit: string;
   calcValue: number;
   resistorValues: number[];
@@ -41,20 +42,32 @@ export class AppComponent {
         this.ledPowerDrop < 1.6 || this.ledPowerDrop > 4 || isNaN(this.ledPowerDrop) ||
         this.ledCurrent < 2 || this.ledCurrent > 70 || isNaN(this.ledCurrent) ||
         this.numberOfLeds < 1 || this.numberOfLeds > 99 || isNaN(this.numberOfLeds)) {
-          this.message = "Please correct your input values";
-          this.clearInput()
-        } else this.calculate();
+          this.clearOutput();
+          this.message1 = "You didn't provide correct input values. Please correct them.";
+          
+        } else {
+          this.message1 = "";
+          this.message2 = "";
+          this.calculate();
+        }
   }
 
-
   calculate() {
+    let value;
     if (this.circuit == "serie") {
-      this.calcValue = (this.powerSupply - (this.ledPowerDrop * this.numberOfLeds)) / (this.ledCurrent / 1000);
+      value = (this.powerSupply - (this.ledPowerDrop * this.numberOfLeds)) / (this.ledCurrent / 1000);
     }
     if (this.circuit == "parallel") {
-      this.calcValue = (this.powerSupply - this.ledPowerDrop) / (this.ledCurrent * this.numberOfLeds / 1000);
+      value = (this.powerSupply - this.ledPowerDrop) / (this.ledCurrent * this.numberOfLeds / 1000);
     }
-    this.neededResistor();
+    if (value < 0) {
+      console.log("value < 0");
+      this.clearOutput();
+      this.message2 = "Power supply not sufficient. Lower the amount of leds or connect a bigger power supply."
+    }else {
+      this.calcValue = value;
+      this.neededResistor();
+    }
   }
 
   neededResistor() {
@@ -75,6 +88,16 @@ export class AppComponent {
     for (let i = 2; i < this.colourString.length; i++) {
       this.colour3 = this.colourArray[(this.colourString.length - 2)];
     }
+    this.displayColour();
+  }
+
+  displayColour(){
+    let colour1 = document.getElementById("colour1");
+    let colour2 = document.getElementById("colour2");
+    let colour3 = document.getElementById("colour3");
+    colour1.style.backgroundColor = this.colour1;
+    colour2.style.backgroundColor = this.colour2;
+    colour3.style.backgroundColor = this.colour3;
   }
 
   clearInput() {
@@ -83,10 +106,17 @@ export class AppComponent {
     this.ledCurrent = null;
     this.numberOfLeds = null;
     this.circuit = '';
+    this.clearOutput;
+  }
+
+  clearOutput(){
     this.calcValue = null;
     this.resistor = null;
     this.colour1 = "";
     this.colour2 = "";
     this.colour3 = "";
+    this.displayColour();
+    this.message1 = "";
+    this.message2 = "";
   }
 }

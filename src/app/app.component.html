@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3"></div>
-
     <div class="col-md-6">
 
       <!-- header section -->
@@ -34,44 +33,63 @@
 
         <div class="form-group">
           <b>Circuit: </b>
-          <input [(ngModel)]="circuit" value="serie" type="radio" id="radioSerie" name="circuit">
-          <label for="radioSerie">Serie</label>
-          <input [(ngModel)]="circuit" value="parallel" type="radio" id="radioParallel" name="circuit">
-          <label for="radioParallel">Parallel</label>
+          <label class="radio-inline">
+            <input [(ngModel)]="circuit" value="serie" type="radio" id="radioSerie" name="circuit">Serie
+          </label>
+          <label class="radio-inline">
+            <input [(ngModel)]="circuit" value="parallel" type="radio" id="radioParallel" name="circuit">Parallel
+          </label>
         </div>
-        <div class="form-group">
-          <button class="btn" (click)="valueCheck()">Calculate</button>
-          <button class="btn" (click)="clearInput()">Clear</button>
-          <div *ngIf="message">
-            <p>{{message}}</p>
-          </div>
+        <div *ngIf="message1" class="alert-warning form-group">
+          <strong>Warning! </strong>{{message1}}
+        </div>
+        <div *ngIf="message2" class="alert-warning form-group">
+          <strong>Warning! </strong>{{message2}}
         </div>
       </form>
-      
+      <form class="form-inline">
+        <div class="form-group">
+          <button class="btn btn-primary btn-lg" (click)="valueCheck()">Calculate</button>
+          <button class="btn btn-lg" (click)="clearInput()">Clear</button>
+        </div>
+      </form>
+      <br>
 
       <!-- output section -->
 
-      <div>
-        <ul>
-          <li>Calculated resistance: {{calcValue}}
-            <span *ngIf="calcValue">&#8486;</span>
-          </li>
-          <li>Needed resistor: {{resistor}}
-            <span *ngIf="resistor">&#8486;</span>
-          </li>
-        </ul>
-      </div>
+      <form>
+        <div class="form-group">
+          <h4>
+            <label>Calculated resistance: {{calcValue}}
+              <span *ngIf="calcValue">&#8486;</span>
+            </label>
+          </h4>
+        </div>
+        <div class="form-group">
+          <h4>
+            <label>Needed resistor: {{resistor}}
+              <span *ngIf="resistor">&#8486;</span>
+            </label>
+          </h4>
+        </div>
+      </form>
 
       <!-- colour code section -->
 
-      <div>
-        <b>Colour code</b>
-        <ul>
-          <li>Colour 1: {{colour1}}</li>
-          <li>Colour 2: {{colour2}}</li>
-          <li>Colour 3: {{colour3}}</li>
-        </ul>
-      </div>
+      <form class="form-inline">
+        <div class="form-group">
+          <label>Colour 1:
+            <div id="colour1" class="colourLabel"></div>{{colour1}}</label>
+        </div>
+        <div class="form-group">
+          <label>Colour 2:
+            <div id="colour2" class="colourLabel"></div>{{colour2}}</label>
+        </div>
+        <div class="form-group">
+          <label>Colour 3:
+            <div id="colour3" class="colourLabel"></div>{{colour3}}</label>
+        </div>
+      </form>
     </div>
     <div class="col-md-3"></div>
   </div>
