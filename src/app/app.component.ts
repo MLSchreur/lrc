@@ -11,7 +11,8 @@ export class AppComponent {
   ledPowerDrop: number;
   ledCurrent: number;
   numberOfLeds: number;
-  message: string;
+  message1: string;
+  message2: string;
   circuit: string;
   calcValue: number;
   resistorValues: number[];
@@ -41,22 +42,30 @@ export class AppComponent {
         this.ledPowerDrop < 1.6 || this.ledPowerDrop > 4 || isNaN(this.ledPowerDrop) ||
         this.ledCurrent < 2 || this.ledCurrent > 70 || isNaN(this.ledCurrent) ||
         this.numberOfLeds < 1 || this.numberOfLeds > 99 || isNaN(this.numberOfLeds)) {
-          this.message = "You didn't provide correct input values. Please correct them.";
+          this.message2 = "";
+          this.message1 = "You didn't provide correct input values. Please correct them.";
           this.clearInput()
         } else {
           this.calculate();
-          this.message = "";
+          this.message1 = "";
         }
   }
 
   calculate() {
+    let value;
     if (this.circuit == "serie") {
-      this.calcValue = (this.powerSupply - (this.ledPowerDrop * this.numberOfLeds)) / (this.ledCurrent / 1000);
+      value = (this.powerSupply - (this.ledPowerDrop * this.numberOfLeds)) / (this.ledCurrent / 1000);
     }
     if (this.circuit == "parallel") {
-      this.calcValue = (this.powerSupply - this.ledPowerDrop) / (this.ledCurrent * this.numberOfLeds / 1000);
+      value = (this.powerSupply - this.ledPowerDrop) / (this.ledCurrent * this.numberOfLeds / 1000);
     }
-    this.neededResistor();
+    if (value < 0) {
+      console.log("value < 0");
+      this.message2 = "Power supply not sufficient. Lower the amount of leds or connect a bigger power supply."
+    }else {
+      this.calcValue = value;
+      this.neededResistor();
+    }
   }
 
   neededResistor() {
@@ -85,7 +94,6 @@ export class AppComponent {
     let colour2 = document.getElementById("colour2");
     let colour3 = document.getElementById("colour3");
     colour1.style.backgroundColor = this.colour1;
-    colour1.style.border = colour2.style.border = colour3.style.border = "1px solid black";
     colour2.style.backgroundColor = this.colour2;
     colour3.style.backgroundColor = this.colour3;
   }

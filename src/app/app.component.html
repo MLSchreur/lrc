@@ -40,8 +40,11 @@
             <input [(ngModel)]="circuit" value="parallel" type="radio" id="radioParallel" name="circuit">Parallel
           </label>
         </div>
-        <div *ngIf="message" class="alert-warning form-group">
-          <strong>Warning! </strong>{{message}}
+        <div *ngIf="message1" class="alert-warning form-group">
+          <strong>Warning! </strong>{{message1}}
+        </div>
+        <div *ngIf="message2" class="alert-warning form-group">
+          <strong>Warning! </strong>{{message2}}
         </div>
       </form>
       <form class="form-inline">
