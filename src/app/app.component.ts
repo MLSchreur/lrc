@@ -13,7 +13,7 @@ export class AppComponent {
   numberOfLeds: number;
   message1: string;
   message2: string;
-  circuit: string;
+  circuit: string = "";
   calcValue: number;
   resistorValues: number[];
   resistor: number;
@@ -38,13 +38,12 @@ export class AppComponent {
   }
 
   valueCheck() {
-    if (this.powerSupply < 3 || this.powerSupply > 24 || isNaN(this.powerSupply) ||
+    if (this.circuit == "" || this.powerSupply < 3 || this.powerSupply > 24 || isNaN(this.powerSupply) ||
         this.ledPowerDrop < 1.6 || this.ledPowerDrop > 4 || isNaN(this.ledPowerDrop) ||
         this.ledCurrent < 2 || this.ledCurrent > 70 || isNaN(this.ledCurrent) ||
         this.numberOfLeds < 1 || this.numberOfLeds > 99 || isNaN(this.numberOfLeds)) {
           this.clearOutput();
           this.message1 = "You didn't provide correct input values. Please correct them.";
-          
         } else {
           this.message1 = "";
           this.message2 = "";
@@ -60,8 +59,7 @@ export class AppComponent {
     if (this.circuit == "parallel") {
       value = (this.powerSupply - this.ledPowerDrop) / (this.ledCurrent * this.numberOfLeds / 1000);
     }
-    if (value < 0) {
-      console.log("value < 0");
+    if (value <= 0) {
       this.clearOutput();
       this.message2 = "Power supply not sufficient. Lower the amount of leds or connect a bigger power supply."
     }else {
@@ -106,7 +104,7 @@ export class AppComponent {
     this.ledCurrent = null;
     this.numberOfLeds = null;
     this.circuit = '';
-    this.clearOutput;
+    this.clearOutput();
   }
 
   clearOutput(){
